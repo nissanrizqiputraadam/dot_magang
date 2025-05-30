@@ -8,7 +8,7 @@ const decodeHtml = (html) => {
   return txt.value;
 };
 
-const TOTAL_TIME = 60; // total waktu 1 menit (bisa ubah sesuai kebutuhan)
+const TOTAL_TIME = 30;
 
 function LoginPage({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -22,7 +22,7 @@ function LoginPage({ onLogin }) {
 
   return (
     <div className="login-container">
-      <h2>Login Kuis</h2>
+      <h2>Login Quiz</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -71,7 +71,7 @@ function QuizPage({ username, onFinish, savedProgress }) {
     fetchQuestions();
   }, []);
 
-  // Timer hitung mundur
+  // Timer
   useEffect(() => {
     if (questions.length === 0) return;
     if (timeLeft <= 0) {
@@ -85,7 +85,7 @@ function QuizPage({ username, onFinish, savedProgress }) {
     return () => clearTimeout(timerRef.current);
   }, [timeLeft, questions]);
 
-  // Simpan progress ke localStorage saat ada perubahan
+  // Simpan progress ke localStorage 
   useEffect(() => {
     if (questions.length === 0) return;
     localStorage.setItem(
